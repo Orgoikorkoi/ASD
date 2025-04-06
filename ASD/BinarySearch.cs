@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ASD
+namespace ASD.Algorithms
 {
-    internal class BinarySearch
+    public class BinarySearch
     {
-        static int BinSearch(int[] array, int target)
+        public static int BinSearch(int[] array, int key)
         {
             int left = 0;
             int right = array.Length - 1;
@@ -17,27 +17,21 @@ namespace ASD
             {
                 int mid = (left + right) / 2;
 
-                if (array[mid] == target)
-                    return mid; // znaleziono
-                else if (array[mid] < target)
+                if (array[mid] == key)
+                {
+                    return mid;
+                }
+                else if (array[mid] < key)
+                {
                     left = mid + 1;
+                }
                 else
+                {
                     right = mid - 1;
+                }
             }
 
-            return -1; // nie znaleziono
+            return -1;
         }
-
-        static void Main()
-        {
-            int[] sortedArray = { 1, 3, 5, 7, 9, 11, 13, 15 };
-            int target = 7;
-
-            int index = BinSearch(sortedArray, target);
-
-            if (index != -1)
-                Console.WriteLine($"Znaleziono {target} na indeksie {index}.");
-            else
-                Console.WriteLine($"{target} nie znaleziono.");}
-   }
+    }
 }
