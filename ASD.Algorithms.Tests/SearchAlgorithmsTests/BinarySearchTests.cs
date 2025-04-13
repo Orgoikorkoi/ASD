@@ -1,7 +1,8 @@
+using ASD.Algorithms.SearchAlgorithms;
 using System;
 using Xunit;
 
-namespace ASD.Algorithms.Tests
+namespace ASD.Algorithms.Tests.SearchAlgorithmsTests
 {
     public class BinarySearchTests
     {

@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ASD.Algorithms\ASD.Algorithms.csproj" />
-    <ProjectReference Include="..\ASD\ASD.Algorithms.csproj" />
   </ItemGroup>
 
 </Project>

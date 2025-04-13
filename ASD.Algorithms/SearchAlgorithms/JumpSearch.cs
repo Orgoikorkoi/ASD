@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ASD.Algorithms
+namespace ASD.Algorithms.SearchAlgorithms
 {
     public class JumpSearch
     {

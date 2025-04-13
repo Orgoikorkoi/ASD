@@ -1,8 +1,6 @@
-using System;
-using Xunit;
-using ASD.Algorithms;
+using ASD.Algorithms.SearchAlgorithms;
 
-namespace ASD.Algorithms.Tests
+namespace ASD.Algorithms.Tests.SearchAlgorithmsTests
 {
     public class JumpSearchTests
     {

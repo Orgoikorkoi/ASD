@@ -1,5 +1,5 @@
 ﻿using System;
-using ASD.Algorithms;
+using ASD.Algorithms.SearchAlgorithms;
 
 internal class Program
 {
