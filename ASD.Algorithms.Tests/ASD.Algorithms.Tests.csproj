@@ -26,4 +26,8 @@
     <ProjectReference Include="..\ASD.Algorithms\ASD.Algorithms.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SortAlgorithmsTests\" />
+  </ItemGroup>
+
 </Project>
