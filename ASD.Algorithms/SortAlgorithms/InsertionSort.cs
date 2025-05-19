@@ -1,8 +1,15 @@
-﻿namespace ASD.Algorithms.SortAlgorithms
+﻿using ASD.Algorithms.Interfaces;
+
+namespace ASD.Algorithms.SortAlgorithms
 {
-    public class InsertionSort
+    public class InsertionSort : ISort
     {
-        public static void Sort(int[] arr)
+        public void Sort(int[] array)
+        {
+            InsertSort(array);
+        }
+
+        public static void InsertSort(int[] arr)
         {
             int len = arr.Length;
 

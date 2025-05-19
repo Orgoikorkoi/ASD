@@ -1,8 +1,15 @@
-﻿namespace ASD.Algorithms.SortAlgorithms
+﻿using ASD.Algorithms.Interfaces;
+
+namespace ASD.Algorithms.SortAlgorithms
 {
-    public class SelectionSort
+    public class SelectionSort : ISort
     {
-        public static void Sort(int[] array)
+        public void Sort(int[] array)
+        {
+            SortInternal(array);
+        }
+
+        public static void SortInternal(int[] array)
         {
             int n = array.Length;
             for (int i = 0; i < n - 1; i++)

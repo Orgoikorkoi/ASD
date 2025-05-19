@@ -1,34 +1,37 @@
-﻿using System;
+﻿using ASD.Algorithms.Interfaces;
+using System;
 
 namespace ASD.Algorithms.SearchAlgorithms
 {
-    public class JumpSearch
+    public class JumpSearch : ISearch
     {
-        public static int Search(int[] array, int key)
+        public int Search(int[] array, int key)
         {
+            return JSearch(array, key);
+        }
+
+        public static int JSearch(int[] array, int key)
+        {
+            const int NotFound = -1;
             int length = array.Length;
+            if (length == 0) return NotFound;
 
-            if (length == 0)
-                return -1;
-
-            int k = (int)Math.Floor(Math.Sqrt(length));
+            int step = (int)Math.Floor(Math.Sqrt(length));
             int prev = 0;
+            int k = step;
 
-            while (array[Math.Min(k, length) - 1] < key)
+            while (k < length && array[k - 1] < key)
             {
                 prev = k;
-                k += (int)Math.Floor(Math.Sqrt(length));
-                if (prev >= length)
-                    return -1;
+                k += step;
             }
 
-            for (int i = prev; i < Math.Min(k, length); i++)
+            for (int i = prev; i <= Math.Min(k, length - 1); i++)
             {
-                if (array[i] == key)
-                    return i;
+                if (array[i] == key) return i;
             }
 
-            return -1;
+            return NotFound;
         }
     }
 }

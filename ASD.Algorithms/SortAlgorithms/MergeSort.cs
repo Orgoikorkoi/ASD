@@ -1,65 +1,72 @@
-﻿namespace ASD.Algorithms.SortAlgorithms
+﻿using ASD.Algorithms.Interfaces;
+
+namespace ASD.Algorithms.SortAlgorithms
 {
-    public class MergeSort
+    public class MergeSort : ISort
     {
-        public static int[] Sort(int[] S)
+        public void Sort(int[] array)
         {
-            return MergeSortRecursive(S, S.Length);
+            SortInternal(array);
         }
 
-        private static int[] MergeSortRecursive(int[] S, int len)
+        public static void SortInternal(int[] array)
         {
-            if (len <= 1)
+            if (array == null || array.Length <= 1)
             {
-                int[] result = new int[len];
-                Array.Copy(S, result, len);
-                return result;
+                return;
             }
 
-            int m = len / 2;
-
-            int[] left = new int[m];
-            int[] right = new int[len - m];
-
-            Array.Copy(S, 0, left, 0, m);
-            Array.Copy(S, m, right, 0, len - m);
-
-            return Merge(MergeSortRecursive(left, m), MergeSortRecursive(right, len - m));
+            int[] buffer = new int[array.Length];
+            MergeSortRecursive(array, buffer, 0, array.Length - 1);
         }
 
-        private static int[] Merge(int[] left, int[] right)
+        private static void MergeSortRecursive(int[] array, int[] buffer, int left, int right)
         {
-            List<int> result = [];
-            int i = 0;
-            int j = 0;
-
-            while (i < left.Length && j < right.Length)
+            if (left >= right)
             {
-                if (left[i] <= right[j])
+                return;
+            }
+
+            int mid = (left + right) / 2;
+
+            MergeSortRecursive(array, buffer, left, mid);
+            MergeSortRecursive(array, buffer, mid + 1, right);
+
+            Merge(array, buffer, left, mid, right);
+        }
+
+        private static void Merge(int[] array, int[] buffer, int left, int mid, int right)
+        {
+            int i = left;
+            int j = mid + 1;
+            int k = left;
+
+            while (i <= mid && j <= right)
+            {
+                if (array[i] <= array[j])
                 {
-                    result.Add(left[i]);
-                    i++;
+                    buffer[k++] = array[i++];
                 }
                 else
                 {
-                    result.Add(right[j]);
-                    j++;
+                    buffer[k++] = array[j++];
                 }
             }
 
-            while (i < left.Length)
+            while (i <= mid)
             {
-                result.Add(left[i]);
-                i++;
+                buffer[k++] = array[i++];
             }
 
-            while (j < right.Length)
+            while (j <= right)
             {
-                result.Add(right[j]);
-                j++;
+                buffer[k++] = array[j++];
             }
 
-            return result.ToArray();
+            for (int l = left; l <= right; l++)
+            {
+                array[l] = buffer[l];
+            }
         }
     }
 }

@@ -1,9 +1,19 @@
-﻿namespace ASD.Algorithms.SortAlgorithms
+﻿using ASD.Algorithms.Interfaces;
+
+namespace ASD.Algorithms.SortAlgorithms
 {
-    public class QuickSort
+    public class QuickSort : ISort
     {
-        public static void Sort(int[] arr)
+        public void Sort(int[] array)
         {
+            SortInternal(array);
+        }
+
+        public static void SortInternal(int[] arr)
+        {
+            if (arr == null || arr.Length <= 1)
+                return;
+
             QuickSortRecursive(arr, 0, arr.Length - 1);
         }
 
